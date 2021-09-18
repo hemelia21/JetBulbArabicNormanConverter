@@ -27,7 +27,7 @@ public class NotationConverter {
 
         if (romanNotationLength == 0) {
             throw new InvalidValueException(
-                    "InvalidValueException: String must contain only valid roman numerals [I, V, X, L, C, D, M]."
+                    "String must contain only valid roman numerals [I, V, X, L, C, D, M]."
             );
         }
 
@@ -37,7 +37,7 @@ public class NotationConverter {
 
             if (!romanArabicConverter.containsKey(letter)) {
                 throw new InvalidValueException(
-                        "InvalidValueException: String must contain only valid roman numerals [I, V, X, L, C, D, M]."
+                        "String must contain only valid roman numerals [I, V, X, L, C, D, M]."
                 );
             }
             if (i <  romanNotationLength - 1) {
