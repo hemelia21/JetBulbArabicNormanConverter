@@ -2,24 +2,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NotationConverter {
-    private static final Map<Character, Integer> romanArabicConverter = new HashMap<>();
-    private static final Map<String, Integer> specialRomanArabicConverter = new HashMap<>();
+    private static final Map<String, Integer> romanArabicConverter = new HashMap<>();
     private int arabicNotation;
 
     static {
-        romanArabicConverter.put('I', 1);
-        romanArabicConverter.put('V', 5);
-        romanArabicConverter.put('X', 10);
-        romanArabicConverter.put('L', 50);
-        romanArabicConverter.put('C', 100);
-        romanArabicConverter.put('D', 500);
-        romanArabicConverter.put('M', 1000);
-        specialRomanArabicConverter.put("IV", 4);
-        specialRomanArabicConverter.put("IX", 9);
-        specialRomanArabicConverter.put("XL", 40);
-        specialRomanArabicConverter.put("XC", 90);
-        specialRomanArabicConverter.put("CD", 400);
-        specialRomanArabicConverter.put("CM", 900);
+        romanArabicConverter.put("I", 1);
+        romanArabicConverter.put("V", 5);
+        romanArabicConverter.put("X", 10);
+        romanArabicConverter.put("L", 50);
+        romanArabicConverter.put("C", 100);
+        romanArabicConverter.put("D", 500);
+        romanArabicConverter.put("M", 1000);
+        romanArabicConverter.put("IV", 4);
+        romanArabicConverter.put("IX", 9);
+        romanArabicConverter.put("XL", 40);
+        romanArabicConverter.put("XC", 90);
+        romanArabicConverter.put("CD", 400);
+        romanArabicConverter.put("CM", 900);
     }
 
     public int toArabic(String romanNotation) throws InvalidValueException {
@@ -33,7 +32,7 @@ public class NotationConverter {
         }
 
         while (i < romanNotationLength) {
-            char letter = romanNotation.charAt(i);
+            String letter = romanNotation.substring(i, i + 1);
             String twoLetters = "";
 
             if (!romanArabicConverter.containsKey(letter)) {
@@ -44,8 +43,8 @@ public class NotationConverter {
             if (i <  romanNotationLength - 1) {
                 twoLetters = romanNotation.substring(i, i + 2);
             }
-            if (specialRomanArabicConverter.containsKey(twoLetters)) {
-                    this.arabicNotation += specialRomanArabicConverter.get(twoLetters);
+            if (romanArabicConverter.containsKey(twoLetters)) {
+                    this.arabicNotation += romanArabicConverter.get(twoLetters);
                     i++;
             }
             else {
